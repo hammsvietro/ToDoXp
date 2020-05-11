@@ -1,0 +1,34 @@
+body{
+  background-color: #121212;
+  color: #bb86fc;
+  margin-top: 60px;
+}
+
+.container {
+  margin-top: 40px;
+  display: flex;
+  margin: 10rem 30rem;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input {
+  background-color: #303030;
+  color: #fff;padding: 5px 10px;
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+
+button {
+  border-radius: 8px;
+  width: 60px;
+  height: 40px;
+}
