@@ -22,5 +22,9 @@
         "react"
     ],
     "rules": {
+        "padded-blocks": "off",
+        "no-trailing-spaces": "off",
+        "no-multiple-empty-lines": "off",
+        "no-extra-boolean-cast": "off"
     }
 }
