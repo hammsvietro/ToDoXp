@@ -1,11 +1,14 @@
+
+
 .dashboard-page {
   display: flex;
   flex-direction: column;
   padding-top: 30px;
   padding: 0 30vh;
   align-items: center;
+  background-color: #121212;
   color: #bb68fc;
-  height: 100vh;
+  height: 110vh;
 }
 
 .navbar{
@@ -36,4 +39,20 @@
 .new-todo input:focus {
   border-color: #bb68fc;
   border-width: 2px;
+}
+
+.todos-list ul {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+  list-style: none;
+}
+
+.todo {
+  background-color: #282828;
+  border-color: #03dac6;
+  border-width: 10px;
+  border-radius: 12px;
+  padding: 15px 15px;
 }

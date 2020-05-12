@@ -2,12 +2,13 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 import api from '../services/api';
 
-const AuthContext = createContext({ user: {}, signed: false, signIn: {}, signOut: {} });
+const AuthContext = createContext({ user: {}, signed: false, token: '', signIn: {}, signOut: {}, checkLocalStorage: {} });
 
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState({});
+  const [token, setToken] = useState('');
 
   const signIn = async (username, password) => {
     let response;
@@ -16,7 +17,7 @@ export const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         setUser(response.data.user);
         api.defaults.headers.authorization = `Bearer ${response.data.token}`;
-        localStorage.setItem('user', JSON.parse(response.data.user));
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem('token', response.data.token);
       }
     } catch (err) {
@@ -27,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    setUser(null);
+    setUser({});
     localStorage.clear();
     api.defaults.headers.authorization = '';
   };
@@ -35,22 +36,25 @@ export const AuthProvider = ({ children }) => {
   const checkLocalStorage = () => {
     let checkUser = localStorage.getItem('user');
     const checkToken = localStorage.getItem('token');
-
-    if (!checkUser || !checkToken) return false;
-
+    
+    
+    if (!checkUser || !checkToken) return setUser({});
+    
     checkUser = JSON.parse(checkUser);
 
     setUser(checkUser);
+    setToken(checkToken);
     api.defaults.headers.authorization = `Bearer ${checkToken}`;
+    
   
     return Boolean(user);
   };
 
   useEffect(() => {
     checkLocalStorage();
-  }, [checkLocalStorage]);
+  }, []);
   return (
-    <AuthContext.Provider value={{ user, signed: !!user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, token, signed: Object.keys(user).length !== 0, signIn, signOut, checkLocalStorage }}>
       {children}
     </AuthContext.Provider>
   );
