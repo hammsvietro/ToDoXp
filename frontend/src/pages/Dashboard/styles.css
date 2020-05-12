@@ -1,0 +1,39 @@
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding: 0 30vh;
+  align-items: center;
+  color: #bb68fc;
+  height: 100vh;
+}
+
+.navbar{
+  padding-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vh;
+  padding-bottom: 40%;
+}
+.navbar h1 {
+  padding-right: 40vh;
+}
+
+.new-todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-todo input {
+  margin-bottom: 30px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.new-todo input:focus {
+  border-color: #bb68fc;
+  border-width: 2px;
+}

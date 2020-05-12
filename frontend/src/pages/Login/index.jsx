@@ -1,45 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { useAuth } from '../../contexts/AuthContext';
-
+import { useAuth } from '../../contexts/authContext';
 import './styles.css';
 
 export default function Login() {
+  
+  const { signIn, signed } = useAuth();
+
+  const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-
-  const { signIn, user } = useAuth();
-
-  const handleLogin = async (e) => {
+  async function handleLogin(e) {
     e.preventDefault();
-
-    
     signIn(username, password);
-
-    console.log(user);
-
-  };
+  }
+  
+  useEffect(() => {
+    if (!signed) history.push('/');
+    if (signed) history.push('/dashboard');
+  }, [signed, history]);
 
   return (
-    <div className="container">
-      <form onSubmit={handleLogin}>
+    <div className="login-page">
+      <h1>Login Page</h1>
 
-        <input
-          placeholder="email or username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-        />
-        <button type="submit">login</button>
-
-      </form>
+      <div className="form-div">
+        <form onSubmit={handleLogin}>
+          <input
+            placeholder="Username or Email:"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input 
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 }

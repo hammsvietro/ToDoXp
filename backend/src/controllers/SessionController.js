@@ -11,7 +11,7 @@ module.exports = {
     
 
     // eslint-disable-next-line max-len
-    const user = await User.findOne({ where: { username }});
+    const user = await User.findOne({ where: Sequelize.or({ username }, { email: username }) });
 
     if(!user) return res.status(404).send('wrong crendentials');
     if(await bcrypt.compare(password, user.password) === false) return res.status(404).send('wrong crendentials');
