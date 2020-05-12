@@ -7,10 +7,11 @@ const generateToken = require('../utils/generateToken');
 module.exports = {
   async authenticate(req, res) {
 
-    const { userLogIn, password } = req.body;
+    const { username, password } = req.body;    
+    
 
     // eslint-disable-next-line max-len
-    const user = await User.findOne({ where: Sequelize.or({ email: userLogIn }, { username: userLogIn }) });
+    const user = await User.findOne({ where: { username }});
 
     if(!user) return res.status(404).send('wrong crendentials');
     if(await bcrypt.compare(password, user.password) === false) return res.status(404).send('wrong crendentials');

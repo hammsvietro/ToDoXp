@@ -21,7 +21,6 @@
         "padded-blocks": "off",
         "object-curly-newline": "off",
         "no-trailing-spaces": "off",
-        "no-multiple-empty-lines": ["error", { "max": 4, "maxEOF": 1 }],
         "no-console": "off"
     }
 }

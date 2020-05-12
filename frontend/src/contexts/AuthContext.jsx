@@ -25,18 +25,22 @@ export function useAuth() {
 
 export const AuthProvider = ({ children }) => {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const signIn = async (email, password) => {
+  const signIn = async (username, password) => {
+    
     
     let response;
     try {
-      response = await api.get('/login', { email, password });
+      response = await api.post('login', {
+        username,
+        password });
+      
       console.log(response.data);
       if (response.status === 200) {
         setUser(response.data.user);
-        localStorage.setItem('user', response.data.user);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         api.defaults.headers.authorization = `Bearer ${response.data.token}`;
         return true;
       }
@@ -49,6 +53,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = async () => {
+    console.log('done');
+    
     setUser(null);
     localStorage.clear();
     api.defaults.headers.authorization = null;
@@ -57,7 +63,9 @@ export const AuthProvider = ({ children }) => {
   const checkLocalStorage = () => {
     const check = localStorage.getItem('user');
 
-    if (!!check) setUser(check);
+    const parsed = JSON.parse(check);
+
+    if (!!check) setUser(parsed);
 
     setLoading(false);
     

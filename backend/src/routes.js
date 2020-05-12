@@ -10,7 +10,7 @@ const { checkToken, checkId } = require('./middlewares/authentication');
 
 routes.get('/', (req, res) => res.send('Hello World'));
 
-routes.get('/login', SessionController.authenticate);
+routes.post('/login', SessionController.authenticate);
 
 routes.post('/user', UserController.create);
 

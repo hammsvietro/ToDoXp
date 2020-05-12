@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -15,15 +15,12 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    await signIn(username, password);
+    
+    signIn(username, password);
 
     console.log(user);
 
   };
-
-  useEffect(() => {
-    
-  }, []);
 
   return (
     <div className="container">
