@@ -1,26 +1,5 @@
-
-
 .dashboard-page {
-  display: flex;
-  flex-direction: column;
-  padding-top: 30px;
-  padding: 0 30vh;
-  align-items: center;
-  background-color: #121212;
-  color: #bb68fc;
-  height: 110vh;
-}
-
-.navbar{
-  padding-top: 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100vh;
-  padding-bottom: 40%;
-}
-.navbar h1 {
-  padding-right: 40vh;
+  margin: 1rem 5rem 0;
 }
 
 .new-todo {
@@ -37,12 +16,13 @@
 }
 
 .new-todo input:focus {
-  border-color: #bb68fc;
+  border-color: #e1ad01;
   border-width: 2px;
 }
 
 .todos-list ul {
-  margin-top: 40px;
+  color: #e1ad01;
+  margin: 40px 100px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
@@ -55,4 +35,52 @@
   border-width: 10px;
   border-radius: 12px;
   padding: 15px 15px;
+  max-width: 500px;
+}
+
+
+
+.todo-body {
+  margin-left: 22px;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.middle {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.middle .profile {
+  display: flex;
+  height: 300px;
+  width: 500px;
+  border-radius: 18px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #e1ad01;
+  background-color: #282828;
+  padding: 50px;
+}
+
+.middle .profile .stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.middle .profile .stats h2 + h2 {
+  padding-left: 80px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
 }

@@ -64,7 +64,7 @@ module.exports = {
     await todo.destroy();
     await user.save();
 
-    return res.status(400).send('success');
+    return res.status(200).send('success');
 
   },
   

@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    setUser({});
+    setUser({}); 
     localStorage.clear();
     api.defaults.headers.authorization = '';
   };
@@ -53,7 +53,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     checkLocalStorage();
   }, []);
+  
   return (
+    // eslint-disable-next-line max-len
     <AuthContext.Provider value={{ user, token, signed: Object.keys(user).length !== 0, signIn, signOut, checkLocalStorage }}>
       {children}
     </AuthContext.Provider>
