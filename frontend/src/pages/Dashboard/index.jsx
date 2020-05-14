@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
+import Button from '@material-ui/core/Button';
 import { FiTrash2, FiCheck } from 'react-icons/fi';
 
 import { useAuth } from '../../contexts/authContext';
@@ -78,18 +77,21 @@ export default function Dashboard() {
 
 
   return (
-    <div className="dashboard-page">
+    <div className="dashboard">
 
-      <Navbar variant="dark" expand="large">
-        <Navbar.Brand variant="warning">ToDoXp</Navbar.Brand>
-        <Button variant="outline-warning" onClick={handleLogout}>logout</Button>
-      </Navbar>
+      <div className="navbar">
+        <h1>ToDoXp</h1>
+        <Button className="btn" variant="default" onClick={handleLogout}>logout</Button>
+      </div>
+      
       <div className="middle">
         <div className="profile">
           <h1>{user.username}</h1>
           <div className="stats">
-            <h2>{user.level}</h2>
-            <h2>{user.xp}</h2>
+
+            <h2>{`level: ${user.level}`}</h2>
+            <h2>{`XP: ${user.xp}`}</h2>
+
           </div>
         </div>
 
@@ -112,7 +114,7 @@ export default function Dashboard() {
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}  
           />
-          <Button variant="outline-warning" onClick={handlePost}>Add</Button>
+          <Button className="btn" variant="default" onClick={handlePost}>Add</Button>
                   
         </div>
       </div>
@@ -134,11 +136,11 @@ export default function Dashboard() {
                 <p>{todo.body}</p>
               </div>
               <div className="action-buttons">
-                <Button variant="outline-warning" onClick={() => handleMarkAsDone(todo.id)}>
-                  <FiCheck size="16" color="#e1ad01" />
+                <Button className="btn" variant="default" onClick={() => handleMarkAsDone(todo.id)}>
+                  <FiCheck size="16" color="#000" />
                 </Button>
-                <Button variant="outline-warning">
-                  <FiTrash2 size="16" color="#e1ad01" />
+                <Button className="btn" variant="default">
+                  <FiTrash2 size="16" color="#000" />
                 </Button>
               </div>
 

@@ -1,86 +1,51 @@
-.dashboard-page {
-  margin: 1rem 5rem 0;
+.dashboard {
+  margin: 16px 10vw;
 }
 
-.new-todo {
+.dashboard .btn {
+  background-color: #ffdb58;
+}
+
+
+.dashboard .navbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.new-todo input {
-  margin-bottom: 30px;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.new-todo input:focus {
-  border-color: #e1ad01;
-  border-width: 2px;
-}
-
-.todos-list ul {
-  color: #e1ad01;
-  margin: 40px 100px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 24px;
-  list-style: none;
-}
-
-.todo {
-  background-color: #282828;
-  border-color: #03dac6;
-  border-width: 10px;
-  border-radius: 12px;
-  padding: 15px 15px;
-  max-width: 500px;
-}
-
-
-
-.todo-body {
-  margin-left: 22px;
-}
-
-.todo-header {
-  display: flex;
-  justify-content: space-around;
-}
-
-.middle {
-  margin-top: 70px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.middle .profile {
-  display: flex;
-  height: 300px;
-  width: 500px;
-  border-radius: 18px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #e1ad01;
-  background-color: #282828;
-  padding: 50px;
-}
-
-.middle .profile .stats {
-  display: flex;
-  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
-.middle .profile .stats h2 + h2 {
-  padding-left: 80px;
+.dashboard .navbar h1 {
+  color: #ffdb58;
 }
 
-.action-buttons {
+.dashboard .middle {
+  margin: 100px 0 40px;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  height: 30vh;
+  justify-content: space-between;
+}
+
+.dashboard .middle .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffdb58;
+  height: 30vh;
+  padding: 3vh 0 0;
+  width: 20vw;
+  margin: 0;
+  border-radius: 8px;
+  border-color: rgba(255, 218, 88, 0.3);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.dashboard .middle .profile .stats {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3vw 3vh;
 }
