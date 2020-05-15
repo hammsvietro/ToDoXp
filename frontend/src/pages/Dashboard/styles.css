@@ -3,9 +3,15 @@
 }
 
 .dashboard .btn {
-  background-color: #ffdb58;
+  color: #ffdb58;
+  background-color: #121212;
+  transition: 0.2s;
 }
 
+.dashboard .btn:hover {
+  background-color: #ffdb58;
+  color: #121212;
+}
 
 .dashboard .navbar {
   display: flex;
@@ -34,7 +40,7 @@
   height: 30vh;
   padding: 3vh 0 0;
   width: 20vw;
-  margin: 0;
+  margin-left: 10vw;
   border-radius: 8px;
   border-color: rgba(255, 218, 88, 0.3);
   border-style: solid;
@@ -47,5 +53,43 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3vw 3vh;
+  padding: 0 1rem 1.5vh;
+
+}
+.dashboard .new-todo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10vw;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffdb58;
+  height: 30vh;
+  padding: 3vh 0 0;
+  width: 25vw;
+  border-radius: 8px;
+  border-color: rgba(255, 218, 88, 0.3);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.dashboard .new-todo input{
+  width: 18vw;
+  border-radius: 8px;
+  border-color: #121212;
+  border-width: 1px;
+  height: 2rem;
+}
+
+.dashboard .new-todo input:focus{
+  border-color: #ffdb58;
+}
+.dashboard .new-todo textarea{
+  width: 18vw;
+  border-radius: 8px;
+  height: 6rem;
+  resize: none;
+}
+
+.dashboard .new-todo textarea:focus{
+  border-color: #ffdb58;
 }

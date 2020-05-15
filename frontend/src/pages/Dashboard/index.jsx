@@ -101,8 +101,9 @@ export default function Dashboard() {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <input 
+          <textarea 
             value={body}
+            maxLength="255"
             onChange={(e) => setBody(e.target.value)}
           />
 
