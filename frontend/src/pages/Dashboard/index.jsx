@@ -39,18 +39,11 @@ export default function Dashboard() {
     const response = await api.put(`user/${user.id}/todo/${id}`, {
       title, body, difficulty,
     });
-    console.log(response.data);
     
     if (response.status === 200) {
       
       let arr = todos;
-      console.log(arr);
-      console.log(id);
-      arr = arr.filter((item) => {
-        console.log(item.id);
-        return item.id !== id;        
-      });
-      console.log(arr);
+      arr = arr.filter((item) => item.id !== id);
       setTodos(arr);
     }
   }
@@ -125,23 +118,33 @@ export default function Dashboard() {
         <ul>
           {todos.map((todo) => (
             <li className="todo" key={todo.id}>
-              <div className="todo-header">
-                <strong>Title:</strong>
-                <p>{todo.title}</p>
+              <div className="todo-info">
+                <div className="todo-header">
 
-                <strong>Difficulty:</strong>
-                <p>{todo.difficulty}</p>
+                  <div className="title">
+                    <strong>Title:</strong>
+                    <p>{todo.title}</p>
+                  </div>
+
+                  <div className="difficulty">
+                    <strong>Difficulty:</strong>
+                    <p>{todo.difficulty}</p>
+                  </div>
+                </div>
+
+                <div className="todo-body">
+                  <strong>Body:</strong>
+                  <p>{todo.body}</p>
+                </div>
+
               </div>
-              <div className="todo-body">
-                <strong>Body:</strong>
-                <p>{todo.body}</p>
-              </div>
+
               <div className="action-buttons">
                 <Button className="btn" variant="default" onClick={() => handleMarkAsDone(todo.id)}>
-                  <FiCheck size="16" color="#000" />
+                  <FiCheck size="24" />
                 </Button>
                 <Button className="btn" variant="default">
-                  <FiTrash2 size="16" color="#000" />
+                  <FiTrash2 size="24" />
                 </Button>
               </div>
 
