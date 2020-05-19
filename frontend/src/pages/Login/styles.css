@@ -4,7 +4,7 @@
   background-color: #fff;
 }
 
-.login-page .middle {
+.login-page .grid {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,12 +12,14 @@
   padding-top: 80px;
 }
 
-.login-page .middle img {
+.login-page .grid-item img {
   display: block;
   max-width:300px;
   max-height: 300px;
   width: auto;
   height: auto;
+  align-self: center;
+  text-align: center;
 }
 
 .login-page .navbar{
@@ -33,15 +35,11 @@
   color: #fff;
 }
 
-.login-page .login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-page .login {
+.login-page .register {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   justify-content: space-between;
   height: 250px;
   margin-top: 40px;
@@ -49,4 +47,12 @@
   border-width: 1px;
   border-radius: 6px;
   padding: 20px 10px;
+}
+
+.login-page .grid {
+  margin: 4vh 10vw;
+}
+
+.login-page .grid-item {
+  text-align: center;
 }

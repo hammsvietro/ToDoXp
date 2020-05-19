@@ -34,6 +34,21 @@ module.exports = {
 
   },
 
+  async getTopUsers(req, res) {
+
+    const users = await User.findAll({
+      limit: 10,
+      order: [
+        ['level', 'desc'],
+        ['xp', 'desc'],
+      ],
+      attributes: ['username', 'level', 'xp'],
+    });
+
+    return res.status(200).send(users);
+
+  },
+
   async changePassword(req, res) {
     
     const { userId } = req.params;
@@ -57,7 +72,5 @@ module.exports = {
     return res.status(200).send('success');
 
   },
-
-
 
 };

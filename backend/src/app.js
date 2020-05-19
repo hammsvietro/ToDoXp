@@ -24,4 +24,4 @@ class App {
   } 
 }
   
-  module.exports = new App().express;
+module.exports = new App().express;

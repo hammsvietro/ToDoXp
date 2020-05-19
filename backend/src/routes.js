@@ -14,6 +14,8 @@ routes.post('/login', SessionController.authenticate);
 
 routes.post('/user', UserController.create);
 
+routes.get('/topUsers', UserController.getTopUsers);
+
 routes.get('/user/:userId', UserController.get);
 
 routes.put('/user/:userId', checkToken, checkId, UserController.changePassword);

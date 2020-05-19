@@ -45,7 +45,7 @@ module.exports = {
     const currentLevel = user.level;
     const currentXp = user.xp;
 
-    if(currentLevel > 6) { // max level scenario
+    if(currentLevel > 9) { // max level scenario
       
       user.xp = currentXp + gainedXp;
 

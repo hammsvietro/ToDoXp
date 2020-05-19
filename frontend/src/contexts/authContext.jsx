@@ -14,14 +14,18 @@ export const AuthProvider = ({ children }) => {
     let response;
     try {
       response = await api.post('login', { username, password });
+      if (response.status === 404) {
+        
+        return false;
+      }
       if (response.status === 200) {
         setUser(response.data.user);
         api.defaults.headers.authorization = `Bearer ${response.data.token}`;
         localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem('token', response.data.token);
+        
       }
     } catch (err) {
-      console.log(err);
       return false;
     }
     return true;
@@ -46,7 +50,6 @@ export const AuthProvider = ({ children }) => {
     setToken(checkToken);
     api.defaults.headers.authorization = `Bearer ${checkToken}`;
     
-  
     return Boolean(user);
   };
 
