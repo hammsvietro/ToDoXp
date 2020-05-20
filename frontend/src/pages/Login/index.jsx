@@ -6,6 +6,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useAuth } from '../../contexts/authContext';
 import './styles.css';
 import Logo from '../../assets/logo.png';
+import api from '../../services/api';
 
 
 function Alert(props) {
@@ -19,10 +20,11 @@ export default function Login() {
 
   const history = useHistory();
 
+  
+  /* FOR THE LOGIN BUTTON */
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  /* FOR THE LOGIN BUTTON */
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -50,12 +52,39 @@ export default function Login() {
       setAlert(true);
     }
   }
+
+  /* REGISTER */
+  const [registerUsername, setRegisterUsername] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState('');
   
+  const handleRegister = async () => {
+    if (registerPassword !== registerPasswordConfirm) return false;
+    let response;
+    try {
+      response = await api.post('/user', {
+        username: registerUsername,
+        email: registerEmail,
+        prePassword: registerPassword,
+      });
+
+      if (response.status === 200) {
+        
+        await signIn(registerUsername, registerPassword);
+      }
+    } catch (error) {
+      setAlert(true);
+      
+    }
+
+    return false;
+  };
+
   useEffect(() => {
     if (!signed) history.push('/');
     if (signed) history.push('/dashboard');
   }, [signed, history]);
-
 
   return (
     <div className="login-page">
@@ -87,17 +116,23 @@ export default function Login() {
 
       <div className="grid">
 
-        <Grid container spacing={1}>
+        <Grid container justify="space-around" spacing={1}>
 
           <Grid item xs={12} sm={6} className="grid-item">
             <img src={Logo} alt="logo" />
           </Grid>
 
-          <Grid item xs={12} sm={6} className="grid-item">
-            <form className="register" onSubmit={handleLogin}>
-              <TextField color="primary" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} />
-              <TextField label="password" variant="outlined" type="password" onChange={(e) => setPassword(e.target.value)} />
-              <Button variant="outlined" color="primary" onClick={handleLogin}>login</Button>
+          <Grid item xs={12} sm={6} className="grid-item grid-register">
+            
+            
+            <span>{"don't have an account? register!"}</span>
+            
+            <form className="register" onSubmit={handleRegister}>
+              <TextField className="register-input" color="primary" label="Username" variant="outlined" onChange={(e) => setRegisterUsername(e.target.value)} />
+              <TextField className="register-input" color="primary" label="Email" variant="outlined" onChange={(e) => setRegisterEmail(e.target.value)} />
+              <TextField className="register-input" label="password" variant="outlined" type="password" onChange={(e) => setRegisterPassword(e.target.value)} />
+              <TextField className="register-input" label="password confirm" variant="outlined" type="confirm password" onChange={(e) => setRegisterPasswordConfirm(e.target.value)} />
+              <Button className="register-button" variant="outlined" color="primary" onClick={handleRegister}>login</Button>
             </form>
           </Grid>
         </Grid>

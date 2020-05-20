@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 const { User } = require('../database/models');
+const generateToken = require('../utils/generateToken');
 
 module.exports = {
 
@@ -11,6 +12,7 @@ module.exports = {
       email,
     } = req.body;
 
+
     const user = await User.create({
       username,
       prePassword,
@@ -19,7 +21,13 @@ module.exports = {
 
     if (!user) return res.status(500).send({ error: 'problem creating user, try again later' });
 
-    return res.status(200).send(user);
+    user.prePassword = undefined;
+    user.password = undefined;
+
+    return res.status(200).send({
+      user,
+      token: generateToken({ id: user.id }),
+    });
   },
 
 

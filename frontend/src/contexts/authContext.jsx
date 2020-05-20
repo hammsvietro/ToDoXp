@@ -12,20 +12,23 @@ export const AuthProvider = ({ children }) => {
 
   const signIn = async (username, password) => {
     let response;
+    console.log('hey hey');
+    
     try {
       response = await api.post('login', { username, password });
       if (response.status === 404) {
-        
         return false;
       }
       if (response.status === 200) {
+        console.log('200');
         setUser(response.data.user);
         api.defaults.headers.authorization = `Bearer ${response.data.token}`;
         localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem('token', response.data.token);
-        
       }
     } catch (err) {
+      console.log(err);
+      
       return false;
     }
     return true;
