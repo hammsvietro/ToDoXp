@@ -37,6 +37,11 @@ export default function Login() {
     setAnchorEl(null);
   };
   
+
+  const desciption = 'ToDoXp is a web application to manage your tasks adding a bit of leveling system\n'
+                 + 'When you create a task you can choose a level of difficulty between 1 and \n'
+                 + 'that determines how much xp you will gain after completing the task.';
+
   
   /* FOR THE ALERT */
   const [alert, setAlert] = useState({
@@ -109,7 +114,7 @@ export default function Login() {
     <div className="login-page">
       <AppBar position="fixed" className="navbar">
         <Toolbar className="items">
-          <Typography variant="h6">TODOXP</Typography>
+          <Typography variant="h6" className="title">TODOXP</Typography>
           <Button className="btn" variant="text" onClick={handleClick}>Login</Button>
           <Menu
             id="login-menu"
@@ -135,13 +140,16 @@ export default function Login() {
 
       <div className="grid">
 
-        <Grid container justify="space-around" alignItems="center" spacing={1}>
+        <Grid container justify="space-around" alignItems="center" spacing={4}>
 
-          <Grid item xs={12} sm={6} className="grid-item">
-            <img src={Logo} alt="logo" />
+          <Grid item lg="6" sm="8" xs="12" className="grid-item">
+            <div className="left-grid">
+              <img src={Logo} alt="logo" />
+              <p className="description">{desciption}</p>
+            </div>
           </Grid>
 
-          <Grid item xs={12} sm={6} className="grid-item grid-register">
+          <Grid item lg="6" sm="8" xs="12" className="grid-item grid-register">
             
             
             <span>

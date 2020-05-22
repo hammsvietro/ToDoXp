@@ -2,6 +2,10 @@
   background-color: #fff;
 }
 
+.login-page .title{
+  font-family: 'Chelsea Market', cursive;
+}
+
 .login-page .grid {
   display: flex;
   flex-direction: column;
@@ -12,8 +16,8 @@
 
 .login-page .grid-item img {
   display: block;
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 280px;
+  max-height: 280px;
   width: auto;
   height: auto;
   align-self: center;
@@ -24,8 +28,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 600px;
-  
+  align-items: center;
+}
+
+.login-page .grid-register span {
+  padding-bottom: 10px;
 }
 
 .login-page .navbar{
@@ -48,7 +55,7 @@
   align-items: center;
   justify-content: center;
   justify-content: space-between;
-  height: 450px;
+  height: 100%;
   width: 100%;
   border-style: solid;
   border-width: 1px;
@@ -67,6 +74,7 @@
 
 .login-page .grid-item {
   text-align: center;
+  height: 550px;
 }
 
 .login-page .register .register-button {
@@ -75,4 +83,22 @@
 
 .login-page .top-users {
   margin-top: 100px;
+}
+
+.login-page .left-grid {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10%;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.login-page .left-grid .description {
+  text-align: justify;
+  text-justify: inter-word;
+  font-family: 'Lusitana', serif;
+  font-size: 20px;
+  padding-bottom: 25px;
+
 }
