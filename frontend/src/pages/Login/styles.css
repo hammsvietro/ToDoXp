@@ -72,3 +72,7 @@
 .login-page .register .register-button {
   background-color: #fff;
 }
+
+.login-page .top-users {
+  margin-top: 100px;
+}

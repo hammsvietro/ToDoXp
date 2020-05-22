@@ -5,6 +5,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 
 import { useAuth } from '../../contexts/authContext';
 import './styles.css';
+import TopUsers from '../../components/TopUsers';
 import Logo from '../../assets/logo.png';
 import api from '../../services/api';
 
@@ -38,10 +39,16 @@ export default function Login() {
   
   
   /* FOR THE ALERT */
-  const [alert, setAlert] = useState(false);
+  const [alert, setAlert] = useState({
+    active: false,
+    message: '',
+  });
   
   const handleCloseAlert = () => {
-    setAlert(false);
+    setAlert({
+      active: false,
+      message: '',
+    });
   };
   
   
@@ -49,7 +56,10 @@ export default function Login() {
     e.preventDefault();
     const success = await signIn(username, password);    
     if (!success) {
-      setAlert(true);
+      setAlert({
+        active: true,
+        message: 'wrong credentials',
+      });
     }
   }
 
@@ -60,7 +70,13 @@ export default function Login() {
   const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState('');
   
   const handleRegister = async () => {
-    if (registerPassword !== registerPasswordConfirm) return false;
+    if (registerPassword !== registerPasswordConfirm) {
+      setAlert({
+        active: true,
+        message: 'Password do not match!',
+      });
+      return false;
+    }
     let response;
     try {
       response = await api.post('/user', {
@@ -74,7 +90,10 @@ export default function Login() {
         await signIn(registerUsername, registerPassword);
       }
     } catch (error) {
-      setAlert(true);
+      setAlert({
+        active: true,
+        message: 'Something went wrong, try again',
+      });
       
     }
 
@@ -116,7 +135,7 @@ export default function Login() {
 
       <div className="grid">
 
-        <Grid container justify="space-around" spacing={1}>
+        <Grid container justify="space-around" alignItems="center" spacing={1}>
 
           <Grid item xs={12} sm={6} className="grid-item">
             <img src={Logo} alt="logo" />
@@ -125,7 +144,10 @@ export default function Login() {
           <Grid item xs={12} sm={6} className="grid-item grid-register">
             
             
-            <span>{"don't have an account? register!"}</span>
+            <span>
+              {"don't have an account? "}
+              <strong>REGISTER!</strong>
+            </span>
             
             <form className="register" onSubmit={handleRegister}>
               <TextField className="register-input" color="primary" label="Username" variant="outlined" onChange={(e) => setRegisterUsername(e.target.value)} />
@@ -138,17 +160,20 @@ export default function Login() {
         </Grid>
       </div>
 
+      <TopUsers />
+
+
       <Snackbar
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'center',
         }}
-        key="login failed"
-        open={alert}
+        key={alert.message}
+        open={alert.active}
         autoHideDuration={3000}
         onClose={handleCloseAlert}
       >
-        <Alert severity="error">Wrong Credentials</Alert>
+        <Alert severity="error">{alert.message}</Alert>
       </Snackbar>
     
     </div>

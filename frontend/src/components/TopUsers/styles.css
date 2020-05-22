@@ -1,0 +1,26 @@
+.login-page .rank-users {
+  display: flex;
+  margin: 0 8vw;
+  margin-top: 100px;
+}
+
+.login-page .rank-users .top-user {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background-color: #1b1e23;
+  padding: 15px;
+  border-radius: 8px;
+  border-color: #fff;
+}
+
+.login-page .rank-users .top-user .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-page .rank-users .top-user .top .badge {
+  margin: 0 30px 0 0;
+}
